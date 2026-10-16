@@ -794,7 +794,7 @@
           }
           const reveal = (x, y) =>
             blob(mg, spr("0,0,0", 128, 0.45), P + x * C + C / 2, P + y * C + C / 2, C * 1.5);
-          const fogOff = () => mg.clearRect(0, 0, S, S);
+          const fogOff = () => {};
 
           function size() {
             C = Math.max(12, Math.floor((ui.stage.clientWidth - 6) / N));
@@ -924,15 +924,15 @@
               fin.add(cur);
               save(key, [...fin]);
               sync();
-              ui.say("good", "✓ Все следы найдены за " + shots + " попыток.", "Нажми «Дальше».");
+              ui.say("good", "Все следы найдены за " + shots + " попыток.", "Нажми «Дальше».");
             } else if (shots >= max) {
               over = true;
               ui.say(
                 "bad",
-                "✗ Лимит попыток исчерпан. Найдено: " + found + " / " + tg.length + ".",
+                " Лимит попыток исчерпан. Найдено: " + found + " / " + tg.length + ".",
                 "Нажми «Сбросить».",
               );
-            } else if (t) ui.say("good", "Нашёл след.", "Осталось найти: " + (tg.length - found));
+            } else if (t) ui.say("good", "Нашли след.", "Осталось найти: " + (tg.length - found));
             info();
             kick();
           }
@@ -1092,7 +1092,7 @@
             const t = T[i],
               s = fin[i];
             sel = s ? s.picked.slice() : [];
-            if (s) ui.say("good", "✓ Уровень пройден.", "Попыток: " + s.attempts);
+            if (s) ui.say("good", "  Уровень пройден.", "Попыток: " + s.attempts);
             else ui.say("", MSG, t.hint);
             grid.className = "grid";
             grid.innerHTML = "";
@@ -1144,14 +1144,14 @@
                 c.classList.add("locked");
                 c.classList.toggle("right", sel.includes(i));
               });
-              ui.say("good", "✓ Верно!", "Попыток на уровне: " + tries[cur]);
+              ui.say("good", "Верно!", "Попыток на уровне: " + tries[cur]);
             } else {
               grid.classList.remove("shake");
               void grid.offsetWidth;
               grid.classList.add("shake");
               ui.say(
                 "bad",
-                "✕ Не совсем. Что-то из выбранного подходит, или не все лишние найдены.",
+                "Не совсем. Что-то из выбранного подходит, или не все лишние найдены.",
                 t.hint,
               );
             }
@@ -1469,7 +1469,7 @@
                 drawn.push(k);
                 dset.add(k);
               });
-              ui.say("good", "✓ Готово.");
+              ui.say("good", "Готово.");
             } else
               ui.say(
                 "",
@@ -1661,8 +1661,8 @@
               ui.say(
                 "good",
                 lv.eye
-                  ? "✓ Глаз открылся... и смотрит на тебя."
-                  : "✓ Готово!",
+                  ? "Глаз открылся... и смотрит на тебя."
+                  : "Готово!",
                 "Нажми «Дальше».",
               );
               kick();
@@ -1876,7 +1876,7 @@
               zones,
               conds: good
                 .map((t) => ({ t: Z[t][4] + " ✓", key: t }))
-                .concat(bad.map((t) => ({ t: Z[t][4] + " ✗" }))),
+                .concat(bad.map((t) => ({ t: Z[t][4] + " " }))),
             };
           }
           function carve(seed) {
@@ -2243,7 +2243,7 @@
             dead = true;
             ui.say(
               "bad",
-              "✗ " +
+              " " +
                 label.charAt(0).toUpperCase() +
                 label.slice(1) +
                 " — нельзя сюда заходить. Нажми «Сбросить».",
@@ -2262,7 +2262,7 @@
               dead = true;
               ui.say(
                 "bad",
-                "✗ Дошёл до финиша, но не через все нужные места: " +
+                "Дошёл до конца, но не через все нужные места: " +
                   miss.map((t) => Z[t][2]).join(", ") +
                   ".",
               );
@@ -2274,7 +2274,7 @@
             fin.add(cur);
             save(key, [...fin]);
             sync();
-            ui.say("good", "✓ Уровень пройден.", "Нажми «Дальше».");
+            ui.say("good", "Уровень пройден.", "Нажми «Дальше».");
             hud(100);
             paint();
           }
@@ -2491,7 +2491,7 @@
             if (fin.has(i)) {
               check = () => {};
               lock(f, i);
-              ui.say("good", "✓ Загадка разгадана.", "Нажми «Дальше».");
+              ui.say("good", "Загадка разгадана.", "Нажми «Дальше».");
             } else {
               ui.say("", "Напиши ответ");
               const test = (loud) => {
@@ -2502,7 +2502,7 @@
                     r.classList.remove("shake");
                     void r.offsetWidth;
                     r.classList.add("shake");
-                    ui.say("bad", "✕ Не то.", "Подумай ещё.");
+                    ui.say("bad", "Не то.", "Подумай ещё.");
                   }
                   return;
                 }
@@ -2512,7 +2512,7 @@
                 const t = host.querySelectorAll(".tile")[i];
                 t.textContent = R[i].l;
                 t.classList.add("on");
-                ui.say("good", "✓ Верно!", "Нажми «Дальше».");
+                ui.say("good", "Верно!", "Нажми «Дальше».");
                 refresh();
               };
               check = () => test(true);
@@ -2549,7 +2549,7 @@
                   Riddle(host, done);
                 }),
               );
-              ui.say("good", "✓ Слово «" + FIN + "» собрано.", "Задание решено.");
+              ui.say("good", "Слово «" + FIN + "» собрано.", "Задание решено.");
               return;
             }
             const w = document.createElement("input");
@@ -2558,7 +2558,7 @@
             w.autocomplete = "off";
             const go = () => {
               if (norm(w.value) !== norm(FIN)) {
-                ui.say("bad", "✕ Слово неверное.", "Попробуй ещё.");
+                ui.say("bad", "Слово неверное.", "Попробуй ещё.");
                 w.value = "";
                 return;
               }
