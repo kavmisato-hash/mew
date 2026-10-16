@@ -30,20 +30,12 @@
         --ok: #8ac47a;
         --err: #c07a6c;
       }
-      * {
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
       body {
         background: var(--bg);
         color: var(--text);
-        font:
-          16px/1.6 "PT Serif",
-          serif;
+        font: 16px/1.6 "PT Serif", serif;
         min-height: 100vh;
         overflow-x: hidden;
         padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px));
@@ -55,21 +47,9 @@
         pointer-events: none;
         z-index: -1;
         background:
-          radial-gradient(
-            circle at 12% 8%,
-            rgba(107, 147, 131, 0.07),
-            transparent 42%
-          ),
-          radial-gradient(
-            circle at 88% 36%,
-            rgba(194, 168, 120, 0.04),
-            transparent 42%
-          ),
-          radial-gradient(
-            circle at 50% 100%,
-            rgba(174, 189, 189, 0.05),
-            transparent 55%
-          );
+          radial-gradient(circle at 12% 8%, rgba(107, 147, 131, 0.07), transparent 42%),
+          radial-gradient(circle at 88% 36%, rgba(194, 168, 120, 0.04), transparent 42%),
+          radial-gradient(circle at 50% 100%, rgba(174, 189, 189, 0.05), transparent 55%);
       }
       .fog {
         position: fixed;
@@ -82,37 +62,15 @@
         mix-blend-mode: screen;
         opacity: 0.85;
       }
-      .f1 {
-        background: radial-gradient(
-          ellipse 55% 35% at 20% 30%,
-          rgba(215, 226, 224, 0.07),
-          transparent 70%
-        );
-      }
-      .f2 {
-        background: radial-gradient(
-          ellipse 45% 30% at 80% 65%,
-          rgba(194, 168, 120, 0.06),
-          transparent 70%
-        );
-      }
-      .f3 {
-        background: radial-gradient(
-          ellipse 60% 40% at 55% 90%,
-          rgba(107, 147, 131, 0.08),
-          transparent 70%
-        );
-      }
+      .f1 { background: radial-gradient(ellipse 55% 35% at 20% 30%, rgba(215, 226, 224, 0.07), transparent 70%); }
+      .f2 { background: radial-gradient(ellipse 45% 30% at 80% 65%, rgba(194, 168, 120, 0.06), transparent 70%); }
+      .f3 { background: radial-gradient(ellipse 60% 40% at 55% 90%, rgba(107, 147, 131, 0.08), transparent 70%); }
       .vignette {
         position: fixed;
         inset: 0;
         z-index: 5;
         pointer-events: none;
-        background: radial-gradient(
-          ellipse 75% 65% at 50% 45%,
-          transparent 45%,
-          rgba(6, 9, 10, 0.55) 100%
-        );
+        background: radial-gradient(ellipse 75% 65% at 50% 45%, transparent 45%, rgba(6, 9, 10, 0.55) 100%);
       }
       .firefly {
         position: fixed;
@@ -126,56 +84,23 @@
         box-shadow: 0 0 6px 1px rgba(194, 168, 120, 0.6);
       }
       @keyframes drift {
-        0% {
-          opacity: 0;
-          transform: translate(0, 0);
-        }
-        50% {
-          opacity: 0.55;
-          transform: translate(-15px, -22px);
-        }
-        100% {
-          opacity: 0;
-          transform: translate(-5px, -42px);
-        }
-      }
-      @keyframes fade {
-        from {
-          opacity: 0;
-          transform: translateY(8px);
-        }
-        to {
-          opacity: 1;
-          transform: none;
-        }
+        0% { opacity: 0; transform: translate(0, 0); }
+        50% { opacity: 0.55; transform: translate(-15px, -22px); }
+        100% { opacity: 0; transform: translate(-5px, -42px); }
       }
       @keyframes shake {
-        25% {
-          transform: translateX(-4px);
-        }
-        75% {
-          transform: translateX(4px);
-        }
+        25% { transform: translateX(-4px); }
+        75% { transform: translateX(4px); }
       }
-      h1,
-      h3,
-      .display {
-        font-family: "Cormorant Garamond", serif;
-        font-weight: 400;
-      }
+      h1, h3, .display { font-family: "Cormorant Garamond", serif; font-weight: 400; }
       .wrap {
         max-width: 760px;
         margin: 0 auto;
         padding: calc(36px + env(safe-area-inset-top, 0px)) 16px 0;
         position: relative;
         z-index: 2;
-        animation: fade 0.5s ease;
       }
-      .list {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
+      .list { display: flex; flex-direction: column; gap: 8px; }
       .item {
         display: flex;
         justify-content: space-between;
@@ -185,24 +110,34 @@
         background: var(--panel2);
         border: 1px solid var(--line);
         color: var(--text);
-        font:
-          15px "PT Serif",
-          serif;
+        font: 15px "PT Serif", serif;
         cursor: pointer;
         -webkit-tap-highlight-color: transparent;
       }
-      .item:active {
-        background: var(--card);
-      }
-      .item em {
-        font:
-          normal 13px "PT Mono",
-          monospace;
+      .item:active { background: var(--card); }
+      .item.done { color: var(--muted); }
+      .item .mark { color: var(--ok); }
+      .all {
+        margin-top: 22px;
+        text-align: center;
+        font: 22px "Cormorant Garamond", serif;
         color: var(--gold);
       }
-      .item.done {
-        border-color: var(--gold);
+      .reset-all {
+        display: block;
+        margin: 36px auto 0;
+        padding: 8px 12px;
+        background: none;
+        border: none;
+        color: var(--muted);
+        opacity: 0.45;
+        font: 10px "PT Mono", monospace;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
       }
+      .reset-all:hover { color: var(--err); opacity: 1; }
 
       .backdrop {
         position: fixed;
@@ -216,22 +151,17 @@
         overflow-y: auto;
         backdrop-filter: blur(6px);
       }
-      .backdrop.open {
-        display: flex;
-        animation: fade 0.2s ease;
-      }
+      .backdrop.open { display: flex; }
       .modal {
         background: var(--panel);
         border: 1px solid var(--line);
-        padding: 26px 20px;
+        padding: 18px 14px 12px;
         width: 100%;
         max-width: 560px;
-        margin: auto 0;
+        margin: auto;
         flex-shrink: 0;
         position: relative;
-        box-shadow:
-          0 30px 80px -30px rgba(0, 0, 0, 0.85),
-          0 0 0 1px var(--gold-soft);
+        box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.85), 0 0 0 1px var(--gold-soft);
       }
       .modal::before {
         content: "";
@@ -253,21 +183,12 @@
         font-size: 22px;
         line-height: 1;
         cursor: pointer;
-        transition: 0.2s;
       }
-      .close:hover {
-        color: var(--gold);
-      }
-      .head {
-        display: flex;
-        gap: 14px;
-        align-items: center;
-        margin-bottom: 18px;
-        padding-right: 24px;
-      }
+      .close:hover { color: var(--gold); }
+      .head { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; padding-right: 24px; }
       .icon {
-        width: 46px;
-        height: 46px;
+        width: 34px;
+        height: 34px;
         flex-shrink: 0;
         display: flex;
         align-items: center;
@@ -275,71 +196,38 @@
         background: var(--panel2);
         border: 1px solid var(--gold-soft);
         color: var(--gold);
-        font-size: 20px;
+        font-size: 15px;
       }
-      .head h3 {
-        font-size: 25px;
-        color: var(--gold);
-        margin: 0;
-      }
+      .head h3 { font-size: 19px; color: var(--gold); margin: 0; }
 
-      .tabs {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        margin-bottom: 10px;
-      }
+      .tabs { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
       .tab {
         flex: 1 1 44px;
         padding: 9px 4px;
         background: none;
         border: 1px solid var(--line);
         color: var(--muted);
-        font:
-          11px "PT Mono",
-          monospace;
+        font: 11px "PT Mono", monospace;
         letter-spacing: 0.1em;
         cursor: pointer;
-        transition: 0.2s;
         -webkit-tap-highlight-color: transparent;
         touch-action: manipulation;
       }
-      .tab:hover:not(:disabled) {
-        border-color: rgba(194, 168, 120, 0.4);
-        color: var(--gold);
-      }
-      .tab:disabled {
-        opacity: 0.3;
-        cursor: not-allowed;
-      }
-      .tab.done {
-        border-color: var(--ok);
-        color: var(--ok);
-        background: rgba(138, 196, 122, 0.14);
-      }
-      .tab.active {
-        border-color: var(--gold);
-        color: var(--gold);
-        background: rgba(194, 168, 120, 0.1);
-      }
-      .legend,
-      .chips {
+      .tab:hover:not(:disabled) { border-color: rgba(194, 168, 120, 0.4); color: var(--gold); }
+      .tab:disabled { opacity: 0.3; cursor: not-allowed; }
+      .tab.done { border-color: var(--ok); color: var(--ok); background: rgba(138, 196, 122, 0.14); }
+      .tab.active { border-color: var(--gold); color: var(--gold); background: rgba(194, 168, 120, 0.1); }
+      .legend, .chips {
         display: flex;
         flex-wrap: wrap;
-        gap: 6px 10px;
-        margin-bottom: 10px;
-        font:
-          10px "PT Mono",
-          monospace;
+        gap: 4px 8px;
+        margin-bottom: 6px;
+        font: 10px "PT Mono", monospace;
         letter-spacing: 0.04em;
         text-transform: uppercase;
         color: var(--muted);
       }
-      .legend span {
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-      }
+      .legend span { display: inline-flex; align-items: center; gap: 5px; }
       .legend i {
         width: 12px;
         height: 12px;
@@ -351,7 +239,6 @@
         border: 1px solid rgba(194, 168, 120, 0.25);
         color: var(--gold);
         background: rgba(194, 168, 120, 0.08);
-        transition: 0.3s;
       }
       .chips .done {
         color: var(--ok);
@@ -367,25 +254,18 @@
         display: flex;
         justify-content: space-between;
         gap: 10px;
-        margin-bottom: 8px;
-        font:
-          10px/1.4 "PT Mono",
-          monospace;
+        margin-bottom: 6px;
+        font: 10px/1.4 "PT Mono", monospace;
         letter-spacing: 0.06em;
         text-transform: uppercase;
         color: var(--muted);
       }
-      .row b {
-        color: var(--gold);
-        font-weight: 400;
-      }
-      .row b.warn {
-        color: #e05a30;
-      }
+      .row b { color: var(--gold); font-weight: 400; }
+      .row b.warn { color: #e05a30; }
       .stage {
         display: flex;
         justify-content: center;
-        background: var(--stage);
+        background: radial-gradient(circle at 50% 45%, #0f1b20 0%, #08100e 100%);
         border: 1px solid var(--line);
         border-radius: 3px;
         padding: 10px;
@@ -395,7 +275,14 @@
       }
       .stage.col {
         display: block;
+        user-select: text;
+        -webkit-user-select: text;
+        background: #101a1c;
+        border-color: rgba(60, 80, 84, 0.5);
+        box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.3);
       }
+      .stage.bare { padding: 0; background: none; border: none; border-radius: 0; }
+      .stage.bare canvas { border: none; }
       .stage canvas {
         display: block;
         max-width: 100%;
@@ -403,14 +290,8 @@
         cursor: crosshair;
         touch-action: manipulation;
       }
-      .drag .stage canvas {
-        touch-action: none;
-      }
-      .acts {
-        display: flex;
-        gap: 8px;
-        margin-top: 10px;
-      }
+      .drag .stage canvas { touch-action: none; }
+      .acts { display: flex; gap: 8px; margin-top: 8px; }
       .btn {
         flex: 1;
         padding: 12px 10px;
@@ -418,13 +299,10 @@
         border: 1px solid var(--line);
         border-radius: 3px;
         color: var(--muted);
-        font:
-          11px "PT Mono",
-          monospace;
+        font: 11px "PT Mono", monospace;
         letter-spacing: 0.1em;
         text-transform: uppercase;
         cursor: pointer;
-        transition: 0.25s;
         -webkit-tap-highlight-color: transparent;
       }
       .btn:hover:not(:disabled) {
@@ -432,31 +310,19 @@
         color: var(--gold);
         background: rgba(194, 168, 120, 0.04);
       }
-      .btn.primary {
-        background: var(--gold);
-        border-color: var(--gold);
-        color: var(--bg);
-        font-weight: 700;
-      }
-      .btn.primary:hover:not(:disabled) {
-        background: #d4ba8a;
-        color: var(--bg);
-      }
-      .btn:disabled {
-        opacity: 0.35;
-        cursor: not-allowed;
-      }
+      .btn.primary { background: var(--gold); border-color: var(--gold); color: var(--bg); font-weight: 700; }
+      .btn.primary:hover:not(:disabled) { background: #d4ba8a; color: var(--bg); }
+      .btn:disabled { opacity: 0.35; cursor: not-allowed; }
       .status {
-        margin-top: 12px;
-        min-height: 48px;
-        padding: 12px 14px;
-        font-size: 13px;
-        line-height: 1.55;
+        margin-top: 8px;
+        min-height: 38px;
+        padding: 10px 12px;
+        font-size: 12px;
+        line-height: 1.45;
         border-left: 3px solid var(--line);
         border-radius: 0 3px 3px 0;
         background: var(--stage);
         color: var(--muted);
-        transition: 0.3s;
       }
       .status .sub {
         display: block;
@@ -465,50 +331,33 @@
         letter-spacing: 0.05em;
         opacity: 0.85;
       }
-      .status.good {
-        color: var(--ok);
-        border-color: var(--ok);
-        background: rgba(138, 196, 122, 0.07);
-      }
-      .status.bad {
-        color: var(--err);
-        border-color: var(--err);
-        background: rgba(192, 122, 108, 0.07);
-      }
+      .status.good { color: var(--ok); border-color: var(--ok); background: rgba(138, 196, 122, 0.07); }
+      .status.bad { color: var(--err); border-color: var(--err); background: rgba(192, 122, 108, 0.07); }
       .final {
         padding: 28px 18px;
         text-align: center;
         border: 1px solid rgba(194, 168, 120, 0.35);
         border-radius: 3px;
-        background: radial-gradient(
-          ellipse 90% 40% at 50% 0%,
-          rgba(194, 168, 120, 0.1),
-          transparent 70%
-        );
-        animation: fade 0.7s ease both;
+        background: radial-gradient(ellipse 90% 40% at 50% 0%, rgba(194, 168, 120, 0.1), transparent 70%);
       }
-      .final .big {
-        font:
-          28px "Cormorant Garamond",
-          serif;
-        color: var(--gold);
-        margin-bottom: 6px;
-      }
-      .final .small {
-        font-size: 13px;
-        color: var(--muted);
-        margin-bottom: 18px;
-      }
-      .final .btn {
-        width: 100%;
-      }
+      .final .big { font: 28px "Cormorant Garamond", serif; color: var(--gold); margin-bottom: 6px; }
+      .final .small { font-size: 13px; color: var(--muted); margin-bottom: 18px; }
+      .final .btn { width: 100%; }
 
       .grid {
+        position: relative;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
         width: 100%;
-        max-width: 480px;
+        background: #080c0e;
+        border: 1px solid rgba(60, 80, 84, 0.5);
+      }
+      .grid::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(ellipse 75% 75% at 50% 50%, transparent 40%, rgba(0, 0, 0, 0.55) 100%);
       }
       .card {
         position: relative;
@@ -517,243 +366,126 @@
         align-items: center;
         justify-content: center;
         padding: 10px;
-        background: #141e21;
-        border: 1px solid var(--line);
-        border-radius: 3px;
+        background: #0a1114;
+        border: 1px solid rgba(60, 80, 84, 0.26);
         cursor: pointer;
-        transition: 0.25s;
-        animation: fade 0.35s ease backwards;
       }
+      .card:nth-child(even) { background: #0d1418; }
       .card img {
         max-width: 88%;
         max-height: 88%;
         object-fit: contain;
         pointer-events: none;
-        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
-        transition: transform 0.3s;
+        filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.45));
       }
-      .card span {
-        font-size: 12px;
-        text-align: center;
-        color: var(--muted);
-      }
-      .card:hover {
-        border-color: rgba(194, 168, 120, 0.45);
-        background: #1a272b;
-        transform: translateY(-3px);
-      }
-      .card:hover img {
-        transform: scale(1.05);
-      }
-      .card:active {
-        transform: scale(0.97);
-      }
+      .card span { font-size: 12px; text-align: center; color: var(--muted); }
+      .card:hover { background: rgba(194, 168, 120, 0.07); }
       .card.selected {
-        border-color: var(--gold);
-        background: rgba(194, 168, 120, 0.12);
-        box-shadow:
-          0 0 0 1px rgba(194, 168, 120, 0.6),
-          0 0 26px -6px rgba(194, 168, 120, 0.85);
+        background: rgba(194, 168, 120, 0.09);
+        box-shadow: inset 0 0 0 2px rgba(194, 168, 120, 0.9);
       }
-      .card.selected::after {
-        content: "●";
-        position: absolute;
-        right: 7px;
-        bottom: 5px;
-        color: var(--gold);
-        font-size: 15px;
-      }
-      .card.locked {
-        cursor: default;
-        pointer-events: none;
-      }
+      .card.locked { cursor: default; pointer-events: none; }
       .card.right {
-        border-color: var(--ok);
-        background: rgba(138, 196, 122, 0.12);
-        box-shadow:
-          0 0 0 1px rgba(138, 196, 122, 0.6),
-          0 0 26px -6px rgba(138, 196, 122, 0.8);
+        background: rgba(138, 196, 122, 0.08);
+        box-shadow: inset 0 0 0 2px rgba(138, 196, 122, 0.7);
       }
       .card.right::after {
         content: "✓";
         position: absolute;
         right: 7px;
-        bottom: 5px;
+        top: 4px;
         color: var(--ok);
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 700;
       }
-      .grid.shake {
-        animation: shake 0.4s;
-      }
+      .grid.shake { animation: shake 0.4s; }
 
-      .riddles {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-      }
-      .riddle {
-        padding: 14px 16px;
-        background: var(--panel2);
-        border: 1px solid var(--line);
-        transition: 0.25s;
-      }
-      .riddle p {
-        margin: 0 0 10px;
-        font-size: 13.5px;
-        line-height: 1.5;
-      }
-      .riddle.solved {
-        border-color: var(--gold-soft);
-        background:
-          radial-gradient(
-            ellipse 90% 40% at 50% 0%,
-            rgba(194, 168, 120, 0.06),
-            transparent 70%
-          ),
-          var(--panel2);
-      }
+      .riddle { padding: 14px 4px 4px; text-align: center; }
+      .riddle p { margin: 0 0 16px; font: 500 20px/1.45 "Cormorant Garamond", serif; }
+      .riddle.shake { animation: shake 0.4s; }
       .field {
         width: 100%;
-        padding: 9px 11px;
-        background: var(--card);
-        border: 1px solid var(--line);
+        padding: 10px 12px;
+        background: #0c1416;
+        border: 1px solid rgba(60, 80, 84, 0.5);
         color: var(--text);
-        font:
-          16px "PT Serif",
-          serif;
+        text-align: center;
+        font: 16px "PT Serif", serif;
       }
-      .field:focus {
-        outline: none;
-        border-color: var(--gold-soft);
-      }
-      .solved .field {
-        color: var(--gold);
-        border-color: var(--gold-soft);
-        background: var(--gold-soft);
-      }
+      .field:focus { outline: none; border-color: var(--gold-soft); }
+      .solved .field { color: var(--gold); border-color: var(--gold-soft); background: var(--gold-soft); }
       .field.word {
         flex: 1;
-        text-align: center;
+        min-width: 0;
         letter-spacing: 0.3em;
         text-transform: uppercase;
-        font:
-          18px "PT Mono",
-          monospace;
+        font: 18px "PT Mono", monospace;
         color: var(--gold);
-        background: var(--panel2);
+        background: #141f22;
       }
       .letters {
         margin-top: 10px;
-        padding: 14px 12px 16px;
-        background: var(--stage);
-        border: 1px solid var(--line);
+        padding: 12px 12px 14px;
+        background: #101a1c;
+        border: 1px solid rgba(60, 80, 84, 0.5);
+        box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.3);
         border-radius: 3px;
       }
       .tiles-label {
         text-align: center;
-        font:
-          10px "PT Mono",
-          monospace;
+        font: 10px "PT Mono", monospace;
         letter-spacing: 0.2em;
         text-transform: uppercase;
         color: var(--muted);
       }
-      .tiles {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px;
-        margin-top: 10px;
-      }
+      .tiles { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 10px; }
       .tile {
-        width: 42px;
-        height: 52px;
+        width: 40px;
+        height: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font:
-          26px "Cormorant Garamond",
-          serif;
+        font: 22px "Cormorant Garamond", serif;
         color: var(--muted);
-        background: var(--panel2);
-        border: 1px solid var(--line);
-        border-bottom: 2px solid var(--line2);
+        background: #141f22;
+        border: 1px solid rgba(60, 80, 84, 0.5);
+        border-radius: 2px;
       }
       .tile.on {
         color: var(--gold);
-        border-color: var(--gold-soft);
-        background: radial-gradient(
-          ellipse 80% 60% at 50% 20%,
-          rgba(194, 168, 120, 0.16),
-          var(--panel2)
-        );
-        box-shadow: 0 0 14px -4px rgba(194, 168, 120, 0.5);
+        border-color: rgba(194, 168, 120, 0.5);
+        background: rgba(194, 168, 120, 0.08);
       }
 
       @media (max-width: 600px) {
-        .backdrop {
-          padding: 10px;
-          align-items: center;
-        }
-        .modal {
-          padding: 20px 12px 14px;
-        }
-        .head {
-          gap: 10px;
-          margin-bottom: 12px;
-        }
-        .icon {
-          width: 36px;
-          height: 36px;
-          font-size: 16px;
-        }
-        .head h3 {
-          font-size: 20px;
-        }
-        .stage {
-          padding: 6px;
-        }
-        .btn {
-          min-height: 46px;
-          font-size: 10px;
-          letter-spacing: 0.06em;
-        }
-        .tab {
-          font-size: 10px;
-          padding: 8px 4px;
-        }
-        .grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 6px;
-        }
-        .card {
-          padding: 6px;
-        }
-        .tile {
-          width: 34px;
-          height: 44px;
-          font-size: 20px;
-        }
+        .backdrop { padding: 6px; align-items: center; }
+        .modal { padding: 12px 10px 8px; }
+        .head { gap: 8px; margin-bottom: 8px; }
+        .icon { width: 28px; height: 28px; font-size: 13px; }
+        .head h3 { font-size: 16px; }
+        .stage { padding: 6px; }
+        .btn { min-height: 38px; font-size: 10px; letter-spacing: 0.06em; }
+        .tab { font-size: 10px; padding: 6px 4px; }
+        .card { padding: 4px; }
+        .tile { width: 32px; height: 32px; font-size: 16px; }
+        .status { min-height: 34px; padding: 8px 10px; font-size: 11.5px; }
+        .riddle { padding: 10px 2px 2px; }
+        .riddle p { font-size: 18px; }
       }
     </style>
   </head>
   <body>
-    <span class="fog f1"></span><span class="fog f2"></span
-    ><span class="fog f3"></span>
-    <span class="firefly" style="top: 20%; left: 75%"></span
-    ><span
-      class="firefly"
-      style="top: 60%; left: 85%; animation-delay: 2.5s"
-    ></span
-    ><span
-      class="firefly"
-      style="top: 75%; left: 65%; animation-delay: 7.5s"
-    ></span>
+    <span class="fog f1"></span><span class="fog f2"></span><span class="fog f3"></span>
+    <span class="firefly" style="top: 20%; left: 75%"></span>
+    <span class="firefly" style="top: 60%; left: 85%; animation-delay: 2.5s"></span>
+    <span class="firefly" style="top: 75%; left: 65%; animation-delay: 7.5s"></span>
     <div class="vignette"></div>
 
     <div class="wrap">
       <div class="list" id="list"></div>
+      <button class="reset-all" id="resetAll">
+        Сбросить прогресс
+      </button>
     </div>
 
     <div class="backdrop" id="bd">
@@ -808,15 +540,113 @@
           e.onclick = f;
           return e;
         };
+
+        const drawPaw = (c, x, y, s, color) => {
+          c.save();
+          c.translate(x, y + s * 0.1);
+          c.scale(s, s);
+          c.fillStyle = color;
+          c.beginPath();
+          c.moveTo(0, 0.05);
+          c.bezierCurveTo(0.45, 0.05, 0.85, 0.4, 0.8, 0.75);
+          c.bezierCurveTo(0.75, 1.05, 0.4, 1.0, 0, 0.9);
+          c.bezierCurveTo(-0.4, 1.0, -0.75, 1.05, -0.8, 0.75);
+          c.bezierCurveTo(-0.85, 0.4, -0.45, 0.05, 0, 0.05);
+          c.fill();
+          [
+            [-0.95, -0.2, -0.5],
+            [-0.38, -0.8, -0.15],
+            [0.38, -0.8, 0.15],
+            [0.95, -0.2, 0.5],
+          ].forEach(([ex, ey, r]) => {
+            c.beginPath();
+            c.ellipse(ex, ey, 0.25, 0.36, r, 0, 7);
+            c.fill();
+          });
+          c.restore();
+        };
+        const pawImg = new Image();
+        pawImg.src = "img/paw.png";
+        const pawBg = new Image();
+        pawBg.src = "img/paw.png";
+        const tintCache = {};
+        const pawTint = (color) => {
+          if (!pawImg.complete || !pawImg.naturalWidth) return null;
+          if (tintCache[color]) return tintCache[color];
+          const c = document.createElement("canvas");
+          c.width = pawImg.naturalWidth;
+          c.height = pawImg.naturalHeight;
+          const g = c.getContext("2d");
+          g.drawImage(pawImg, 0, 0);
+          g.globalCompositeOperation = "source-in";
+          g.fillStyle = color;
+          g.fillRect(0, 0, c.width, c.height);
+          return (tintCache[color] = c);
+        };
+        const drawPawImg = (c, x, y, s, color, ang) => {
+          c.save();
+          c.translate(x, y);
+          c.rotate(ang || 0);
+          const t = pawTint(color);
+          if (!t) drawPaw(c, 0, 0, s, color);
+          else {
+            const w = s * 2.2,
+              h = (w * t.height) / t.width;
+            c.drawImage(t, -w / 2, -h / 2, w, h);
+          }
+          c.restore();
+        };
+
+        const DPR = () => Math.min(devicePixelRatio || 1, 2);
         const fit = (cv, w, h) => {
-          const d = devicePixelRatio || 1;
-          cv.width = w * d;
-          cv.height = h * d;
+          const d = DPR();
+          cv.width = Math.round(w * d);
+          cv.height = Math.round(h * d);
           cv.style.width = w + "px";
           cv.style.height = h + "px";
           const c = cv.getContext("2d");
           c.setTransform(d, 0, 0, d, 0, 0);
           return c;
+        };
+        const mk = (w, h, k) => {
+          const c = document.createElement("canvas");
+          c.width = Math.max(1, Math.round(w * k));
+          c.height = Math.max(1, Math.round(h * k));
+          const g = c.getContext("2d");
+          g.setTransform(k, 0, 0, k, 0, 0);
+          return [c, g];
+        };
+        const SPR = {};
+        const spr = (rgb, size = 96, core = 0) => {
+          const k = rgb + "|" + size + "|" + core;
+          if (SPR[k]) return SPR[k];
+          const [c, g] = mk(size, size, 1),
+            r = size / 2,
+            gr = g.createRadialGradient(r, r, 0, r, r, r);
+          gr.addColorStop(0, "rgba(" + rgb + ",1)");
+          if (core) gr.addColorStop(core, "rgba(" + rgb + ",1)");
+          else gr.addColorStop(0.45, "rgba(" + rgb + ",.35)");
+          gr.addColorStop(1, "rgba(" + rgb + ",0)");
+          g.fillStyle = gr;
+          g.fillRect(0, 0, size, size);
+          return (SPR[k] = c);
+        };
+        const blob = (c, s, x, y, r) =>
+          c.drawImage(s, x - r, y - r, r * 2, r * 2);
+        const fogPuffs = (c, w, h, t, n, alpha, rgb, ph) => {
+          const s = spr(rgb || "190,208,205", 128);
+          c.globalAlpha = alpha;
+          for (let i = 0; i < n; i++) {
+            const j = i + (ph || 0);
+            blob(
+              c,
+              s,
+              w * (0.5 + 0.6 * Math.sin(t * 0.07 * ((j % 5) + 1) + j * 1.7)),
+              h * (0.5 + 0.55 * Math.cos(t * 0.05 * ((j % 4) + 1) + j * 2.3)),
+              Math.max(w, h) * (0.2 + 0.08 * Math.sin(j + t * 0.2)),
+            );
+          }
+          c.globalAlpha = 1;
         };
 
         function shell(host, count, pick) {
@@ -837,16 +667,11 @@
             row,
             stage: $(".stage", host),
             acts: $(".acts", host),
-            left: (h) => {
-              row.children[0].innerHTML = h;
-            },
-            right: (h) => {
-              row.children[1].innerHTML = h;
-            },
+            left: (h) => { row.children[0].innerHTML = h; },
+            right: (h) => { row.children[1].innerHTML = h; },
             say: (c, m, s) => {
               st.className = "status " + (c || "");
-              st.innerHTML =
-                m + (s ? '<span class="sub">' + s + "</span>" : "");
+              st.innerHTML = m + (s ? '<span class="sub">' + s + "</span>" : "");
             },
             tabs: (d, a, l) =>
               tabs.forEach((e, i) => {
@@ -876,23 +701,17 @@
             [20, 7, 90],
           ];
           const BAND = [
-            [3, "Очень горячо", "rgba(168,65,42,.72)"],
-            [6, "Горячо", "rgba(154,102,52,.62)"],
-            [10, "Тепло", "rgba(138,138,60,.52)"],
-            [16, "Прохладно", "rgba(63,116,160,.48)"],
-            [99, "Холодно", "rgba(45,76,115,.4)"],
+            [3, "Очень горячо", "132,60,48", 0.55],
+            [6, "Горячо", "120,88,52", 0.46],
+            [10, "Тепло", "98,104,60", 0.38],
+            [16, "Прохладно", "50,84,114", 0.36],
+            [99, "Холодно", "36,58,86", 0.32],
           ];
-          let cur = 0,
-            N,
-            max,
-            tg,
-            mark,
-            shots,
-            found,
-            over,
-            C,
-            P,
-            cx;
+          const FK = 0.5;
+          let cur = 0, N, max, tg, mark, shots, found, over, C, P, S, cx,
+            bc, bg, mc, mg, fc, fg, vc,
+            dirty = true, raf = 0, last = 0, hover = null;
+
           const first = () => {
             let i = 0;
             while (i < 5 && fin.has(i)) i++;
@@ -908,26 +727,17 @@
           lg.innerHTML =
             BAND.map(
               (b) =>
-                '<span><i style="background:' +
-                b[2] +
-                '"></i>' +
-                b[1].toLowerCase() +
-                "</span>",
+                '<span><i style="background:rgba(' + b[2] + "," + b[3] + ')"></i>' +
+                b[1].toLowerCase() + "</span>",
             ).join("") +
-            '<span><i style="background:var(--gold);border-radius:50%"></i>находка</span>';
+            '<span><i style="background:var(--gold);border-radius:50%"></i>след</span>';
           ui.row.before(lg);
           ui.stage.append(cv);
-          ui.acts.append(
-            btn("Сбросить", "", () => setup(cur)),
-            bNext,
-          );
+          ui.stage.classList.add("bare");
+          ui.acts.append(btn("Сбросить", "", () => setup(cur)), bNext);
 
           function sync() {
-            ui.tabs(
-              (j) => fin.has(j),
-              cur,
-              (j) => j > first(),
-            );
+            ui.tabs((j) => fin.has(j), cur, (j) => j > first());
             bNext.disabled = !fin.has(cur);
             bNext.className = "btn" + (fin.has(cur) ? " primary" : "");
           }
@@ -958,162 +768,194 @@
             cur = i;
             [N, , max] = LV[i];
             tg = place(N, LV[i][1], rng(SEED ^ ((i + 1) * 0x9e3779b1)));
+            const pr = rng(SEED ^ ((i + 7) * 0x85ebca6b));
+            tg.forEach((p) => {
+              p.rot = (pr() - 0.5) * 2.2;
+              p.ox = (pr() - 0.5) * 0.14;
+              p.oy = (pr() - 0.5) * 0.14;
+            });
             mark = {};
             shots = 0;
             found = 0;
             over = false;
+            hover = null;
             sync();
             info();
             size();
-            paint();
-            ui.say("", "Нажми на клетку — туман подскажет.", "Найди все точки");
+            kick();
+            ui.say("", "Нажми на клетку — туман подскажет.", "Найди все следы");
           }
           function info() {
             ui.left("Найдено <b>" + found + " / " + tg.length + "</b>");
             ui.right(
-              'Попытки <b class="' +
-                (max - shots <= 5 ? "warn" : "") +
-                '">' +
-                shots +
-                " / " +
-                max +
-                "</b>",
+              'Попытки <b class="' + (max - shots <= 5 ? "warn" : "") + '">' +
+                shots + " / " + max + "</b>",
             );
           }
+          const reveal = (x, y) =>
+            blob(mg, spr("0,0,0", 128, 0.45), P + x * C + C / 2, P + y * C + C / 2, C * 1.5);
+          const fogOff = () => mg.clearRect(0, 0, S, S);
+
           function size() {
-            C = Math.max(
-              12,
-              Math.floor(
-                Math.min(ui.stage.clientWidth - 22, innerHeight * 0.72) /
-                  (N + 0.4),
-              ),
-            );
+            C = Math.max(12, Math.floor((ui.stage.clientWidth - 6) / N));
             P = 2;
-            const s = P + C * N + 4;
-            cx = fit(cv, s, s);
+            S = P + C * N + 4;
+            cx = fit(cv, S, S);
+            [bc, bg] = mk(S, S, DPR());
+            [mc, mg] = mk(S, S, FK);
+            [fc, fg] = mk(S, S, FK);
+            mg.globalCompositeOperation = "source-over";
+            mg.fillStyle = "#fff";
+            mg.fillRect(0, 0, S, S);
+            mg.globalCompositeOperation = "destination-out";
+            for (const k in mark) {
+              const [x, y] = k.split(",").map(Number);
+              reveal(x, y);
+            }
+            if (over && found === tg.length) fogOff();
+            let g;
+            [vc, g] = mk(S, S, 1);
+            const gr = g.createRadialGradient(S / 2, S / 2, S * 0.3, S / 2, S / 2, S * 0.75);
+            gr.addColorStop(0, "rgba(0,0,0,0)");
+            gr.addColorStop(1, "rgba(0,0,0,.65)");
+            g.fillStyle = gr;
+            g.fillRect(0, 0, S, S);
+            dirty = true;
           }
-          function glow(x, y, n) {
-            const g = cx.createRadialGradient(x, y, 0, x, y, C * 0.95);
-            g.addColorStop(0, "rgba(240,217,168,.65)");
-            g.addColorStop(1, "rgba(194,168,120,0)");
-            cx.fillStyle = g;
-            cx.beginPath();
-            cx.arc(x, y, C * 0.95, 0, 7);
-            cx.fill();
-            cx.beginPath();
-            cx.arc(x, y, C * 0.36, 0, 7);
-            cx.fillStyle = "#c2a878";
-            cx.fill();
-            cx.strokeStyle = "#f0d9a8";
-            cx.lineWidth = 1.5;
-            cx.stroke();
-            cx.fillStyle = "#0b1112";
-            cx.fillText(n, x, y + 1);
-          }
-          function paint() {
-            const s = P + C * N + 4;
-            cx.fillStyle = "#0a0e10";
-            cx.fillRect(0, 0, s, s);
+          function drawBase() {
+            bg.fillStyle = "#050809";
+            bg.fillRect(0, 0, S, S);
             for (let y = 0; y < N; y++)
               for (let x = 0; x < N; x++) {
-                cx.fillStyle = (x + y) & 1 ? "#101a1d" : "#141e21";
-                cx.fillRect(P + x * C, P + y * C, C, C);
+                bg.fillStyle = (x + y) & 1 ? "#0a1114" : "#0d1418";
+                bg.fillRect(P + x * C, P + y * C, C, C);
                 const m = mark[x + "," + y];
-                if (m && m !== "hit") {
-                  cx.fillStyle = m;
-                  cx.fillRect(P + x * C, P + y * C, C, C);
+                if (m != null && m >= 0) {
+                  const B = BAND[m];
+                  bg.fillStyle = "rgba(" + B[2] + "," + B[3] + ")";
+                  bg.fillRect(P + x * C + 1, P + y * C + 1, C - 2, C - 2);
                 }
               }
-            cx.strokeStyle = "rgba(60,80,84,.3)";
-            cx.lineWidth = 1;
-            cx.beginPath();
+            bg.strokeStyle = "rgba(60,80,84,.14)";
+            bg.lineWidth = 1;
+            bg.beginPath();
             for (let i = 0; i <= N; i++) {
-              cx.moveTo(P, P + i * C + 0.5);
-              cx.lineTo(P + N * C, P + i * C + 0.5);
-              cx.moveTo(P + i * C + 0.5, P);
-              cx.lineTo(P + i * C + 0.5, P + N * C);
+              bg.moveTo(P, P + i * C + 0.5);
+              bg.lineTo(P + N * C, P + i * C + 0.5);
+              bg.moveTo(P + i * C + 0.5, P);
+              bg.lineTo(P + i * C + 0.5, P + N * C);
             }
-            cx.stroke();
-            cx.font =
-              "bold " + Math.max(9, (C * 0.45) | 0) + 'px "PT Mono",monospace';
-            cx.textAlign = "center";
-            cx.textBaseline = "middle";
-            tg.forEach(
-              (t, i) =>
-                t.f && glow(P + t.x * C + C / 2, P + t.y * C + C / 2, i + 1),
-            );
+            bg.stroke();
+            dirty = false;
           }
+          function paint() {
+            if (!cx || !bc) return;
+            if (dirty) drawBase();
+            cx.drawImage(bc, 0, 0, S, S);
+
+            fg.globalCompositeOperation = "source-over";
+            fg.clearRect(0, 0, S, S);
+            fg.fillStyle = "rgba(4,7,9,.96)";
+            fg.fillRect(0, 0, S, S);
+            fogPuffs(fg, S, S, 0, 7, 0.14);
+            fogPuffs(fg, S, S, 9, 5, 0.09, "107,147,131", 3);
+            fg.globalCompositeOperation = "destination-in";
+            fg.drawImage(mc, 0, 0, S, S);
+            cx.drawImage(fc, 0, 0, S, S);
+
+            if (hover && !over && hover.x >= 0 && hover.y >= 0 && hover.x < N && hover.y < N) {
+              const px = P + hover.x * C, py = P + hover.y * C;
+              cx.strokeStyle = "rgba(194,168,120,.9)";
+              cx.lineWidth = 2;
+              cx.strokeRect(px, py, C, C);
+            }
+            cx.drawImage(vc, 0, 0, S, S);
+            const pt = pawTint("#8f7d58");
+            tg.forEach((p) => {
+              if (!p.f || !pt) return;
+              const x = P + (p.x + 0.5 + p.ox) * C,
+                y = P + (p.y + 0.5 + p.oy) * C,
+                k = Math.min((C * 0.72) / pt.width, (C * 0.72) / pt.height),
+                w = pt.width * k,
+                h = pt.height * k;
+              cx.save();
+              cx.translate(x, y);
+              cx.rotate(p.rot);
+              cx.drawImage(pt, -w / 2, -h / 2, w, h);
+              cx.restore();
+            });
+            cx.globalAlpha = 1;
+          }
+          function frame(ts) {
+            raf = 0;
+            if (!host.isConnected) return;
+            raf = requestAnimationFrame(frame);
+            if (ts - last < 33) return;
+            last = ts;
+            paint();
+          }
+          const kick = () => {
+            if (!raf) raf = requestAnimationFrame(frame);
+          };
           function shot(x, y) {
             if (over || x < 0 || y < 0 || x >= N || y >= N) return;
             const k = x + "," + y;
-            if (mark[k])
-              return ui.say(
-                "bad",
-                "Здесь уже проверяли.",
-                "Выбери другую клетку.",
-              );
+            if (k in mark)
+              return ui.say("bad", "Здесь уже проверяли.", "Выбери другую клетку.");
             shots++;
+            reveal(x, y);
             const t = tg.find((p) => !p.f && p.x === x && p.y === y);
             if (t) {
               t.f = 1;
               found++;
-              mark[k] = "hit";
+              mark[k] = -1;
             } else {
               const d = Math.min(
-                  ...tg
-                    .filter((p) => !p.f)
-                    .map((p) => Math.abs(p.x - x) + Math.abs(p.y - y)),
+                  ...tg.filter((p) => !p.f).map((p) => Math.abs(p.x - x) + Math.abs(p.y - y)),
                 ),
-                b = BAND.find((b) => d <= b[0]);
-              mark[k] = b[2];
-              ui.say(
-                d <= 6 ? "good" : "",
-                b[1] + ".",
-                "До ближайшей точки: " + d + " кл.",
-              );
+                bi = BAND.findIndex((b) => d <= b[0]);
+              mark[k] = bi;
+              ui.say(d <= 6 ? "good" : "", BAND[bi][1] + ".", "До ближайшего следа: " + d + " кл.");
             }
+            dirty = true;
             if (found === tg.length) {
               over = true;
+              fogOff();
               fin.add(cur);
               save(key, [...fin]);
               sync();
-              ui.say(
-                "good",
-                "✓ Все точки найдены за " + shots + " попыток.",
-                "Нажми «Дальше».",
-              );
+              ui.say("good", "✓ Все следы найдены за " + shots + " попыток.", "Нажми «Дальше».");
             } else if (shots >= max) {
               over = true;
               ui.say(
                 "bad",
-                "✗ Лимит попыток исчерпан. Найдено: " +
-                  found +
-                  " / " +
-                  tg.length +
-                  ".",
+                "✗ Лимит попыток исчерпан. Найдено: " + found + " / " + tg.length + ".",
                 "Нажми «Сбросить».",
               );
-            } else if (t)
-              ui.say(
-                "good",
-                "Попадание.",
-                "Осталось найти: " + (tg.length - found),
-              );
+            } else if (t) ui.say("good", "Нашёл след.", "Осталось найти: " + (tg.length - found));
             info();
-            paint();
+            kick();
           }
-          cv.onclick = (e) => {
-            const r = cv.getBoundingClientRect();
-            shot(
-              Math.floor((e.clientX - r.left - P) / C),
-              Math.floor((e.clientY - r.top - P) / C),
-            );
+          const cellAt = (e) => {
+            const r = cv.getBoundingClientRect(), k = S / r.width;
+            return {
+              x: Math.floor(((e.clientX - r.left) * k - P) / C),
+              y: Math.floor(((e.clientY - r.top) * k - P) / C),
+            };
           };
+          cv.onclick = (e) => {
+            const c = cellAt(e);
+            shot(c.x, c.y);
+          };
+          cv.onpointermove = (e) => {
+            if (e.pointerType === "mouse") hover = cellAt(e);
+          };
+          cv.onpointerleave = () => (hover = null);
           watch(ui.stage, () => {
-            if (N) {
-              size();
-              paint();
-            }
+            if (N) size();
+          });
+          pawImg.addEventListener("load", () => {
+            if (!over) kick();
           });
           setup(0);
         };
@@ -1188,9 +1030,30 @@
               ],
             },
           ];
+
+          (() => {
+            let userSeed = load("odd_user_seed", 0);
+            if (!userSeed) {
+              userSeed = (Math.random() * 0xffffffff) >>> 0 || 1;
+              save("odd_user_seed", userSeed);
+            }
+            const sr = rng(userSeed);
+            T.forEach((t) => {
+              const idx = t.items.map((_, i) => i);
+              for (let i = idx.length - 1; i > 0; i--) {
+                const j = Math.floor(sr() * (i + 1));
+                [idx[i], idx[j]] = [idx[j], idx[i]];
+              }
+              t.items = idx.map((k) => t.items[k]);
+              t.wrong = t.wrong.map((w) => idx.indexOf(w)).sort((a, b) => a - b);
+            });
+            const order = shuf(T.map((_, i) => i), sr).map((i) => T[i]);
+            T.length = 0;
+            T.push(...order);
+          })();
+
           const key = "odd_done::" + SEED,
-            MSG =
-              "Выбери карточки, которые НЕ подходят по условию.";
+            MSG = "Выбери карточки, которые НЕ подходят по условию.";
           const same = (a, b) =>
             a.length === b.length && a.every((v) => b.includes(v));
           let fin = load(key, {}),
@@ -1207,22 +1070,19 @@
             return i;
           };
           const ui = shell(host, T.length, (i) => {
-              if (i <= first()) setup(i);
+              if (i === first()) setup(i);
             }),
             grid = document.createElement("div");
           grid.className = "grid";
           ui.stage.append(grid);
+          ui.stage.classList.add("bare");
           const bCheck = btn("Проверить", "primary", act);
           ui.acts.append(bCheck);
 
           function refresh() {
             const n = Object.keys(fin).length;
-            ui.tabs(
-              (i) => fin[i],
-              cur,
-              (i) => i > first(),
-            );
-            ui.left("Уровни <b>" + n + " / " + T.length + "</b>");
+            ui.tabs((i) => fin[i], cur, (i) => i !== first());
+            ui.left("Пройдено <b>" + n + " / " + T.length + "</b>");
             ui.right("Тема <b>" + T[cur].theme + "</b>");
             bCheck.textContent = fin[cur] ? "Дальше" : "Проверить";
             bCheck.disabled = !fin[cur] && !sel.length;
@@ -1232,8 +1092,7 @@
             const t = T[i],
               s = fin[i];
             sel = s ? s.picked.slice() : [];
-            if (s)
-              ui.say("good", "✓ Уровень пройден.", "Попыток: " + s.attempts);
+            if (s) ui.say("good", "✓ Уровень пройден.", "Попыток: " + s.attempts);
             else ui.say("", MSG, t.hint);
             grid.className = "grid";
             grid.innerHTML = "";
@@ -1241,9 +1100,7 @@
               const c = document.createElement("div"),
                 im = new Image();
               c.className =
-                "card" +
-                (s ? " locked" + (sel.includes(j) ? " right" : "") : "");
-              c.style.animationDelay = j * 0.05 + "s";
+                "card" + (s ? " locked" + (sel.includes(j) ? " right" : "") : "");
               im.src = o.img;
               im.alt = o.l;
               im.referrerPolicy = "no-referrer";
@@ -1307,7 +1164,7 @@
             if (cur + 1 < T.length) return setup(cur + 1);
             finale(host, "Задание выполнено.", done);
           }
-          setup(0);
+          setup(Math.min(first(), T.length - 1));
         };
 
         const Pattern = (host, done) => {
@@ -1555,10 +1412,13 @@
             gazeT = -1e9,
             raf = 0,
             dead = false;
-          const ui = shell(host, LV.length, (i) => setup(i)),
+          const ui = shell(host, LV.length, (i) => {
+              if (i === first()) setup(i);
+            }),
             cv = document.createElement("canvas");
           host.classList.add("drag");
           ui.stage.append(cv);
+          ui.stage.classList.add("bare");
           const bReset = btn("Сбросить", "", reset),
             bNext = btn("Дальше", "", next);
           ui.acts.append(bReset, bNext);
@@ -1583,7 +1443,7 @@
             ui.tabs(
               (i) => fin[i],
               cur,
-              (i) => i > f,
+              (i) => i !== f,
             );
             ui.left(
               "Уровни <b>" +
@@ -1597,7 +1457,6 @@
             bNext.className = "btn" + (fin[cur] ? " primary" : "");
           }
           function setup(i) {
-            if (i > first()) return;
             cur = i;
             lv = LV[i];
             from = -1;
@@ -1625,7 +1484,7 @@
           function size() {
             const avail = Math.max(
               260,
-              Math.min(ui.stage.clientWidth - 26, 560),
+              Math.min(ui.stage.clientWidth, 560),
             );
             C = Math.max(22, Math.floor((avail - PAD * 2) / 10));
             W = C * 10 + PAD * 2;
@@ -1633,20 +1492,10 @@
             cx = fit(cv, W, H);
           }
           function paint() {
-            const ok = !!fin[cur],
+            const ok = false,
               red = anim(),
               w = Math.max(1.6, C * 0.07);
-            const g = cx.createRadialGradient(
-              W / 2,
-              H / 2,
-              0,
-              W / 2,
-              H / 2,
-              Math.max(W, H) * 0.7,
-            );
-            g.addColorStop(0, "#0f1b20");
-            g.addColorStop(1, "#08100e");
-            cx.fillStyle = g;
+            cx.fillStyle = "#0a1012";
             cx.fillRect(0, 0, W, H);
             cx.strokeStyle = "rgba(60,80,84,.09)";
             cx.lineWidth = 1;
@@ -1739,6 +1588,11 @@
               cx.arc(x, y, C * 0.055, 0, 7);
               cx.fill();
             });
+            const vg = cx.createRadialGradient(W / 2, H / 2, Math.min(W, H) * 0.3, W / 2, H / 2, Math.max(W, H) * 0.75);
+            vg.addColorStop(0, "rgba(0,0,0,0)");
+            vg.addColorStop(1, "rgba(0,0,0,0.55)");
+            cx.fillStyle = vg;
+            cx.fillRect(0, 0, W, H);
             cx.strokeStyle = "rgba(60,80,84,.5)";
             cx.strokeRect(1.5, 1.5, W - 3, H - 3);
           }
@@ -1896,12 +1750,11 @@
               paint();
             }
           });
-          setup(0);
+          setup(Math.min(first(), LV.length - 1));
         };
 
         const Maze = (host, done) => {
-          const touch =
-              matchMedia("(pointer:coarse)").matches || innerWidth < 900,
+          const touch = matchMedia("(pointer:coarse)").matches || innerWidth < 900,
             n = touch ? 7 : 9,
             GW = n * 2 + 1,
             GH = GW,
@@ -1930,36 +1783,21 @@
                 br: [13, 13, 4, 4],
               };
           const Z = {
-            forest: ["rgba(58,110,48,0.55)", "#7ac454", "лес", 1, "лес"],
-            bridge: ["rgba(140,90,42,0.55)", "#d4924a", "мост", 1, "мост"],
-            cave: ["rgba(76,62,96,0.55)", "#9a7ac0", "пещеру", 1, "пещера"],
-            water: ["rgba(36,76,140,0.55)", "#5aa0e0", "воды", 0, "вода"],
-            swamp: ["rgba(112,112,42,0.55)", "#b8b850", "болота", 0, "болото"],
-            rocks: ["rgba(72,72,90,0.55)", "#8888a8", "скал", 0, "скалы"],
-            thorns: ["rgba(86,32,38,0.55)", "#e0454a", "шипов", 0, "шипы"],
-            lava: ["rgba(170,50,32,0.55)", "#e05a30", "лавы", 0, "лава"],
+            forest: ["rgba(58,110,48,0.3)", "#7ac454", "лес", 1, "лес"],
+            bridge: ["rgba(140,90,42,0.3)", "#d4924a", "мост", 1, "мост"],
+            cave: ["rgba(76,62,96,0.3)", "#9a7ac0", "пещеру", 1, "пещера"],
+            water: ["rgba(36,76,140,0.3)", "#5aa0e0", "воды", 0, "вода"],
+            swamp: ["rgba(112,112,42,0.3)", "#b8b850", "болота", 0, "болото"],
+            rocks: ["rgba(72,72,90,0.3)", "#8888a8", "скал", 0, "скалы"],
+            thorns: ["rgba(86,32,38,0.3)", "#e0454a", "шипов", 0, "шипы"],
+            lava: ["rgba(170,50,32,0.3)", "#e05a30", "лавы", 0, "лава"],
           };
           const TPL = [
-            [
-              ["forest", "bridge"],
-              ["water", "thorns", "rocks"],
-            ],
-            [
-              ["cave", "bridge"],
-              ["water", "swamp", "lava"],
-            ],
-            [
-              ["cave", "bridge"],
-              ["water", "rocks", "thorns"],
-            ],
-            [
-              ["forest", "cave"],
-              ["water", "swamp", "lava"],
-            ],
-            [
-              ["forest", "cave", "bridge"],
-              ["water", "swamp", "thorns"],
-            ],
+            [["forest", "bridge"], ["water", "thorns", "rocks"]],
+            [["cave", "bridge"], ["water", "swamp", "lava"]],
+            [["cave", "bridge"], ["water", "rocks", "thorns"]],
+            [["forest", "cave"], ["water", "swamp", "lava"]],
+            [["forest", "cave", "bridge"], ["water", "swamp", "thorns"]],
           ];
           const D4 = [
               [0, -1],
@@ -2007,19 +1845,13 @@
           host.classList.add("drag");
           ui.stage.style.aspectRatio = "1 / 1";
           ui.stage.style.alignItems = "center";
+          ui.stage.classList.add("bare");
           ui.stage.append(cv);
-          ui.acts.append(
-            btn("Сбросить", "", () => setup(cur)),
-            bNext,
-          );
+          ui.acts.append(btn("Сбросить", "", () => setup(cur)), bNext);
           const k = (x, y) => x + "," + y;
 
           function sync() {
-            ui.tabs(
-              (j) => fin.has(j),
-              cur,
-              (j) => j > first(),
-            );
+            ui.tabs((j) => fin.has(j), cur, (j) => j > first());
             bNext.disabled = !fin.has(cur);
             bNext.className = "btn" + (fin.has(cur) ? " primary" : "");
           }
@@ -2113,9 +1945,7 @@
             return path.reverse();
           }
           const zoneAt = (x, y) =>
-            V.zones.find(
-              (z) => x >= z.x && x < z.x + z.w && y >= z.y && y < z.y + z.h,
-            );
+            V.zones.find((z) => x >= z.x && x < z.x + z.w && y >= z.y && y < z.y + z.h);
           function solvable() {
             for (const t of V.required) {
               let ok = false;
@@ -2261,10 +2091,7 @@
           }
           function size() {
             const r = ui.stage.getBoundingClientRect();
-            C = Math.max(
-              14,
-              Math.floor(Math.floor(Math.min(r.width, r.height) - 22) / GW),
-            );
+            C = Math.max(14, Math.floor(r.width / GW));
             cx = fit(cv, C * GW, C * GW);
           }
           function glowDot(x, y, col, gl) {
@@ -2282,10 +2109,6 @@
             cx.beginPath();
             cx.arc(px, py, r * 0.55, 0, 7);
             cx.fill();
-            cx.fillStyle = "rgba(255,255,255,0.7)";
-            cx.beginPath();
-            cx.arc(px - r * 0.18, py - r * 0.18, r * 0.16, 0, 7);
-            cx.fill();
           }
           function paint() {
             const S = GW * C;
@@ -2297,18 +2120,8 @@
                 if (grid[y][x] !== 0) continue;
                 const px = x * C,
                   py = y * C;
-                cx.fillStyle = "#141e21";
+                cx.fillStyle = (x + y) & 1 ? "#111b1e" : "#131e21";
                 cx.fillRect(px, py, C, C);
-                cx.strokeStyle = "rgba(40,58,62,0.5)";
-                cx.lineWidth = 1;
-                cx.beginPath();
-                for (let i = 0; i < C; i += 4) {
-                  cx.moveTo(px + i, py + C);
-                  cx.lineTo(px + i + 6, py + C - 6);
-                }
-                cx.stroke();
-                cx.fillStyle = "rgba(70,95,100,0.3)";
-                cx.fillRect(px + 1, py + 1, 1, 1);
               }
             V.zones.forEach((z) => {
               const [f, e] = Z[z.type],
@@ -2318,11 +2131,11 @@
                 for (let x = z.x; x < z.x + z.w; x++)
                   if (grid[y]?.[x] === 0) cx.fillRect(x * C, y * C, C, C);
               cx.strokeStyle = e;
-              cx.lineWidth = ok ? 3 : 2;
-              cx.globalAlpha = ok ? 1 : 0.9;
+              cx.lineWidth = ok ? 2 : 1.5;
+              cx.globalAlpha = ok ? 0.9 : 0.55;
               cx.strokeRect(z.x * C + 1, z.y * C + 1, z.w * C - 2, z.h * C - 2);
-              cx.globalAlpha = 1;
-              cx.lineWidth = 2;
+              cx.globalAlpha = 0.6;
+              cx.lineWidth = 1.5;
               [
                 [z.x * C + 1, z.y * C + 1],
                 [(z.x + z.w) * C - 1, z.y * C + 1],
@@ -2336,10 +2149,10 @@
                 cx.lineTo(mx, my + 5);
                 cx.stroke();
               });
+              cx.globalAlpha = 1;
               if (ok) {
                 cx.fillStyle = e;
-                cx.font =
-                  "bold " + Math.max(12, Math.floor(C * 0.9)) + "px sans-serif";
+                cx.font = "bold " + Math.max(12, Math.floor(C * 0.9)) + "px sans-serif";
                 cx.textAlign = "right";
                 cx.textBaseline = "top";
                 cx.fillText("✓", (z.x + z.w) * C - 6, z.y * C + 4);
@@ -2350,23 +2163,18 @@
                 if (grid[y][x] !== 1) continue;
                 const px = x * C,
                   py = y * C;
-                cx.fillStyle = "#0a0e10";
+                cx.fillStyle = "#080c0e";
                 cx.fillRect(px, py, C, C);
-                cx.strokeStyle = "rgba(60,80,84,0.45)";
+                cx.strokeStyle = "rgba(60,80,84,0.26)";
                 cx.lineWidth = 1;
                 cx.strokeRect(px + 0.5, py + 0.5, C - 1, C - 1);
-                cx.strokeStyle = "rgba(80,110,115,0.25)";
-                cx.beginPath();
-                cx.moveTo(px + 1, py + 1);
-                cx.lineTo(px + C - 1, py + 1);
-                cx.stroke();
               }
-            glowDot(1, 1, "#c2a878", "rgba(194,168,120,0.5)");
-            glowDot(E, E, "#6b9383", "rgba(107,147,131,0.5)");
+            glowDot(1, 1, "#c2a878", "rgba(194,168,120,0.2)");
+            glowDot(E, E, "#6b9383", "rgba(107,147,131,0.2)");
             if (trail.length > 1) {
               const pts = trail.map(([x, y]) => [x * C + C / 2, y * C + C / 2]);
               [
-                ["rgba(194,168,120,0.35)", Math.max(8, C * 0.85)],
+                ["rgba(194,168,120,0.14)", Math.max(8, C * 0.85)],
                 ["#c2a878", Math.max(5, C * 0.55)],
                 ["#f0d9a8", Math.max(1, C * 0.14)],
               ].forEach(([c, w]) => {
@@ -2374,20 +2182,23 @@
                 cx.lineWidth = w;
                 cx.lineCap = cx.lineJoin = "round";
                 cx.beginPath();
-                pts.forEach(([x, y], i) =>
-                  i ? cx.lineTo(x, y) : cx.moveTo(x, y),
-                );
+                pts.forEach(([x, y], i) => (i ? cx.lineTo(x, y) : cx.moveTo(x, y)));
                 cx.stroke();
               });
               const [hx, hy] = pts[pts.length - 1],
                 g = cx.createRadialGradient(hx, hy, 0, hx, hy, C * 0.55);
-              g.addColorStop(0, "rgba(240,217,168,0.85)");
+              g.addColorStop(0, "rgba(240,217,168,0.45)");
               g.addColorStop(1, "rgba(194,168,120,0)");
               cx.fillStyle = g;
               cx.beginPath();
               cx.arc(hx, hy, C * 0.55, 0, 7);
               cx.fill();
             }
+            const vg = cx.createRadialGradient(S / 2, S / 2, S * 0.3, S / 2, S / 2, S * 0.75);
+            vg.addColorStop(0, "rgba(0,0,0,0)");
+            vg.addColorStop(1, "rgba(0,0,0,0.55)");
+            cx.fillStyle = vg;
+            cx.fillRect(0, 0, S, S);
           }
           function cell(e) {
             const r = cv.getBoundingClientRect(),
@@ -2398,16 +2209,8 @@
             if (grid[y]?.[x] !== 0) {
               let b = null,
                 bd = Infinity;
-              for (
-                let j = Math.max(0, y - 1);
-                j <= Math.min(GH - 1, y + 1);
-                j++
-              )
-                for (
-                  let i = Math.max(0, x - 1);
-                  i <= Math.min(GW - 1, x + 1);
-                  i++
-                ) {
+              for (let j = Math.max(0, y - 1); j <= Math.min(GH - 1, y + 1); j++)
+                for (let i = Math.max(0, x - 1); i <= Math.min(GW - 1, x + 1); i++) {
                   if (grid[j][i] !== 0) continue;
                   const d = Math.hypot(i + 0.5 - fx, j + 0.5 - fy);
                   if (d < bd) {
@@ -2428,8 +2231,7 @@
               if (
                 Z[z.type][3] &&
                 trail.some(
-                  ([x, y]) =>
-                    x >= z.x && x < z.x + z.w && y >= z.y && y < z.y + z.h,
+                  ([x, y]) => x >= z.x && x < z.x + z.w && y >= z.y && y < z.y + z.h,
                 )
               )
                 got.add(z.type);
@@ -2460,7 +2262,7 @@
               dead = true;
               ui.say(
                 "bad",
-                "✗ Дошёл до выхода, но не через все нужные места: " +
+                "✗ Дошёл до финиша, но не через все нужные места: " +
                   miss.map((t) => Z[t][2]).join(", ") +
                   ".",
               );
@@ -2552,8 +2354,7 @@
               hud();
               return;
             }
-            if (!dead)
-              ui.say("", "Нажми на линию.");
+            if (!dead) ui.say("", "Нажми на линию.");
           };
           cv.onpointermove = (e) => {
             if (!drag || won || dead) return;
@@ -2579,11 +2380,7 @@
             if (!drag) return;
             drag = false;
             last = null;
-            if (!won && !dead)
-              ui.say(
-                "",
-                "Веди дальше точку...",
-              );
+            if (!won && !dead) ui.say("", "Веди дальше точку...");
           };
           watch(ui.stage, () => {
             if (grid) {
@@ -2622,7 +2419,12 @@
               l: "Н",
             },
           ];
-          const R = [3, 0, 4, 1, 2].map((i) => R0[i]);
+          let seed = load("riddle_user_seed", 0);
+          if (!seed) {
+            seed = (Math.random() * 0xffffffff) >>> 0 || 1;
+            save("riddle_user_seed", seed);
+          }
+          const R = shuf(R0, rng(seed));
           const FIN = "ТУМАН",
             key = "riddle_lv2";
           const norm = (s) =>
@@ -2632,20 +2434,20 @@
               .replace(/ё/g, "е")
               .replace(/[^a-zа-я0-9]/g, "");
           const fin = new Set(
-            localStorage.getItem("riddle_done") === "1"
-              ? R.keys()
-              : load(key, []),
+            localStorage.getItem("riddle_done") === "1" ? R.keys() : load(key, []),
           );
-          let cur = 0;
+          let cur = 0,
+            check = () => {};
           const first = () => {
             let i = 0;
             while (i < R.length && fin.has(i)) i++;
             return i;
           };
           const ui = shell(host, R.length, (i) => {
-              if (i <= first()) setup(i);
+              if (i === first()) setup(i);
             }),
-            bNext = btn("Дальше", "", next);
+            bNext = btn("Дальше", "", next),
+            bCheck = btn("Проверить", "primary", () => check());
           ui.stage.classList.add("col");
           const box = document.createElement("div");
           box.className = "letters";
@@ -2663,15 +2465,12 @@
             ).join("") +
             "</div>";
           function refresh() {
-            ui.tabs(
-              (i) => fin.has(i),
-              cur,
-              (i) => i > first(),
-            );
-            ui.left("Уровни <b>" + fin.size + " / " + R.length + "</b>");
-            ui.right("Загадка <b>" + (cur + 1) + " / " + R.length + "</b>");
+            ui.tabs((i) => fin.has(i), cur, (i) => i !== first());
+            ui.left("Пройдено <b>" + fin.size + " / " + R.length + "</b>");
+            ui.right("");
             bNext.disabled = !fin.has(cur);
             bNext.className = "btn" + (fin.has(cur) ? " primary" : "");
+            bCheck.disabled = fin.has(cur);
           }
           function lock(f, i) {
             f.value = R[i].a;
@@ -2681,21 +2480,32 @@
           function setup(i) {
             cur = i;
             ui.acts.innerHTML = "";
-            ui.acts.append(bNext);
+            ui.acts.append(bCheck, bNext);
             ui.stage.style.display = "";
             ui.stage.innerHTML =
               '<div class="riddle"><p>' +
               R[i].q +
-              '</p><input class="field" autocomplete="off" placeholder="Ответ..."></div>';
+              '</p><input class="field" autocomplete="off"></div>';
             box.innerHTML = tiles();
             const f = $(".field", host);
             if (fin.has(i)) {
+              check = () => {};
               lock(f, i);
               ui.say("good", "✓ Загадка разгадана.", "Нажми «Дальше».");
             } else {
               ui.say("", "Напиши ответ");
-              const test = () => {
-                if (fin.has(i) || norm(f.value) !== norm(R[i].a)) return;
+              const test = (loud) => {
+                if (fin.has(i)) return;
+                if (norm(f.value) !== norm(R[i].a)) {
+                  if (loud && f.value.trim()) {
+                    const r = $(".riddle", host);
+                    r.classList.remove("shake");
+                    void r.offsetWidth;
+                    r.classList.add("shake");
+                    ui.say("bad", "✕ Не то.", "Подумай ещё.");
+                  }
+                  return;
+                }
                 fin.add(i);
                 save(key, [...fin]);
                 lock(f, i);
@@ -2705,12 +2515,12 @@
                 ui.say("good", "✓ Верно!", "Нажми «Дальше».");
                 refresh();
               };
-              f.addEventListener("input", test);
-              f.addEventListener("change", test);
+              check = () => test(true);
+              f.addEventListener("input", () => test(false));
               f.addEventListener("keydown", (e) => {
                 if (e.key === "Enter") {
                   e.preventDefault();
-                  test();
+                  test(true);
                 }
               });
             }
@@ -2735,15 +2545,11 @@
                 btn("Сбросить", "", () => {
                   localStorage.removeItem("riddle_done");
                   save(key, []);
-                  done();
+                  renderList();
                   Riddle(host, done);
                 }),
               );
-              ui.say(
-                "good",
-                "✓ Слово «" + FIN + "» собрано.",
-                "Задание решено.",
-              );
+              ui.say("good", "✓ Слово «" + FIN + "» собрано.", "Задание решено.");
               return;
             }
             const w = document.createElement("input");
@@ -2757,7 +2563,7 @@
                 return;
               }
               localStorage.setItem("riddle_done", "1");
-              done();
+              renderList();
               finale(host, "Слово «" + FIN + "» собрано.", done);
             };
             w.addEventListener("keydown", (e) => {
@@ -2772,69 +2578,51 @@
           if (localStorage.getItem("riddle_done") === "1") {
             cur = R.length - 1;
             ui.tabs(() => true, -1);
-            ui.left("Уровни <b>" + R.length + " / " + R.length + "</b>");
+            ui.left("Пройдено <b>" + R.length + " / " + R.length + "</b>");
             word();
           } else setup(Math.min(first(), R.length - 1));
         };
 
         const TASKS = [
-          {
-            icon: " ",
-            run: Sea,
-            done: () => load("sea_done::" + SEED, []).length >= 5,
-          },
-          {
-            icon: " ",
-            run: Odd,
-            done: () => Object.keys(load("odd_done::" + SEED, {})).length >= 5,
-          },
+          { icon: " ", run: Sea, done: () => load("sea_done::" + SEED, []).length >= 5 },
+          { icon: " ", run: Odd, done: () => Object.keys(load("odd_done::" + SEED, {})).length >= 5 },
           {
             icon: " ",
             run: Pattern,
             done: () =>
-              Object.values(load("pattern_done::v6::" + SEED, {})).filter(
-                Boolean,
-              ).length >= 8,
+              Object.values(load("pattern_done::v6::" + SEED, {})).filter(Boolean).length >= 8,
           },
-          {
-            icon: " ",
-            run: Maze,
-            done: () => load("maze_done::" + SEED, []).length >= 5,
-          },
-          {
-            icon: " ",
-            run: Riddle,
-            done: () => localStorage.getItem("riddle_done") === "1",
-          },
+          { icon: " ", run: Maze, done: () => load("maze_done::" + SEED, []).length >= 5 },
+          { icon: " ", run: Riddle, done: () => localStorage.getItem("riddle_done") === "1" },
         ];
 
         function renderList() {
-          const list = $("#list");
+          const list = $("#list"),
+            all = TASKS.every((t) => t.done());
           list.innerHTML = "";
           TASKS.forEach((t, i) => {
-            const d = t.done(),
-              b = document.createElement("button");
-            b.className = "item" + (d ? " done" : "");
-            b.innerHTML =
-              "<span>Задание " +
-              (i + 1) +
-              "</span><em>" +
-              (d ? "✓" : "") +
-              "</em>";
+            const b = document.createElement("button"),
+              ok = t.done();
+            b.className = "item" + (ok ? " done" : "");
+            b.innerHTML = "<span>Задание " + (i + 1) + '</span><span class="mark">' + (ok ? "✓" : "") + "</span>";
             b.onclick = () => openTask(t, i);
             list.append(b);
           });
+          if (all) {
+            const e = document.createElement("div");
+            e.className = "all";
+            e.textContent = "Все задания выполнены";
+            list.append(e);
+          }
         }
         function openTask(t, i) {
           $("#body").innerHTML =
-            '<div class="head"><div class="icon">' +
-            t.icon +
-            "</div><h3>Задание " +
+            '<div class="head"><h3>Задание ' +
             (i + 1) +
             '</h3></div><div id="game"></div>';
           $("#bd").classList.add("open");
           document.body.style.overflow = "hidden";
-          t.run($("#game"), renderList);
+          t.run($("#game"), closeTask);
         }
         function closeTask() {
           $("#bd").classList.remove("open");
@@ -2847,9 +2635,23 @@
           if (e.target.id === "bd") closeTask();
         };
         document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape" && $("#bd").classList.contains("open"))
-            closeTask();
+          if (e.key === "Escape" && $("#bd").classList.contains("open")) closeTask();
         });
+        $("#resetAll").onclick = () => {
+          if (!confirm("Сбросить весь прогресс по всем заданиям?")) return;
+          [
+            "sea_done::" + SEED,
+            "odd_done::" + SEED,
+            "odd_done::" + SEED + "::a",
+            "odd_user_seed",
+            "pattern_done::v6::" + SEED,
+            "maze_done::" + SEED,
+            "riddle_lv2",
+            "riddle_done",
+            "riddle_user_seed",
+          ].forEach((k) => localStorage.removeItem(k));
+          location.reload();
+        };
         renderList();
       })();
     </script>
